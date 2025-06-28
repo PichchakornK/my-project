@@ -1,52 +1,110 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import About from './component/About'
-import Education from './component/Education'
-import MyProject from './component/MyProject'
-import Experience from './component/Experience'
-
-import logo from './logo.svg';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import About from './pages/About';
+import Education from './pages/Education';
+import MyProject from './pages/MyProject';
+import Experience from './pages/Experience';
+import MySkills from './pages/MySkills';
+import logo from './pics/images.png';
 import './App.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Router>
-      <Navbar bg="dark" expand="lg" className="shadow-sm">
-        <Container>
-          <Navbar.Brand  className="d-flex align-items-center">
-            <img
-              src={logo}
-              width="40"
-              height="40"
-              className="d-inline-block align-top me-2"
-              alt="Logo"
-            />
-            <span style={{ fontWeight: 'bold', color:'white' }}>Name Surname</span>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" >
-            <Nav>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/education">Education</Nav.Link>
-              <Nav.Link as={Link} to="/myproject">My Project</Nav.Link>
-              <Nav.Link as={Link} to="/experience">Experience</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <div className="App">
+      <Router>
+      <Navbar
+          expand="lg"
+          className="shadow-sm"
+          style={{
+            background: '#b71c1c', 
+            borderBottom: '3px solid #fff'
+          }}
+        >
+          <Container style={{ fontSize: "1.25rem" }}>
+            <Navbar.Brand className="d-flex align-items-center">
+              <img
+                src={logo}
+                width="40"
+                height="40"
+                className="d-inline-block align-top me-2"
+                alt="Logo"
+              />
+              <Nav.Link as={Link} to="/" style={{ padding: 0 }}>
+                <span style={{ fontWeight: 'bold', color: '#fff', fontSize: "1.4rem" }}>
+                  PichchakornK
+                </span>
+              </Nav.Link>
+            </Navbar.Brand>
 
-      <div className="App p-4">
-        <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/myproject" element={<MyProject />} />
-          <Route path="/experience" element={<Experience />} />
-        </Routes>
-      </div>
-    </Router>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+              <Nav>
+                <Nav.Link
+                  as={Link}
+                  to="/education"
+                  style={{
+                    fontSize: "1.18rem",
+                    color: "#fff",
+                    fontWeight: 600,
+                    marginRight: "1.2rem"
+                  }}
+                >
+                  Education
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to="/myskills"
+                  style={{
+                    fontSize: "1.18rem",
+                    color: "#fff",
+                    fontWeight: 600,
+                    marginRight: "1.2rem"
+                  }}
+                >
+                  Skills
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to="/myproject"
+                  style={{
+                    fontSize: "1.18rem",
+                    color: "#fff",
+                    fontWeight: 600,
+                    marginRight: "1.2rem"
+                  }}
+                >
+                  My Project
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to="/experience"
+                  style={{
+                    fontSize: "1.18rem",
+                    color: "#fff",
+                    fontWeight: 600
+                  }}
+                >
+                  Experience
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        <div className="App p-5">
+          <Routes>
+            <Route path="/" element={<About />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/myproject" element={<MyProject />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/myskills" element={<MySkills />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
   );
 }
 
